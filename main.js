@@ -45,8 +45,8 @@ let biciList = [
 ]
 
 //Stampare a schermo la bici con peso minore utilizzando destructuring e template literal
+let biciLow = biciList[0];
 function pesoMinore() {
-    let biciLow = biciList[0];
     for (let i = 0; i < biciList.length; i++) {
         if (biciLow.peso > biciList[i].peso) {
             biciLow = biciList[i];
@@ -55,6 +55,13 @@ function pesoMinore() {
     return biciLow;
 }
 
+const { nome, peso } = biciLow;
+document.getElementById("bici_leggera").insertAdjacentHTML('beforeend', `
+<ul>
+    <li>Modello: ${nome}</li>
+    <li>Peso: ${peso}</li>
+</ul>
+`);
 console.log(pesoMinore());
 
 
@@ -93,9 +100,8 @@ function rndmN() {
 }
 
 for (let i = 0; i < squadre.length; i++) {
-    let punti = squadre[i].punti;
-    let falli = squadre[i].falli_subiti;
-
+    squadre[i].punti = rndmN();
+    squadre[i].falli_subiti = rndmN();
 
 }
 //Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
